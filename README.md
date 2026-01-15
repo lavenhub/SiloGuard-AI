@@ -64,5 +64,5 @@ Follow these steps to download and run the project locally.
 
 ### 1. Clone the Project
 ```bash
-git clone [https://github.com/your-username/SiloGuard-AI.git](https://github.com/your-username/SiloGuard-AI.git)
+git clone [https://github.com/your-username/SiloGuard-AI.git](https://github.com/lavenhub/SiloGuard-AI.git)
 cd SiloGuard-AI
