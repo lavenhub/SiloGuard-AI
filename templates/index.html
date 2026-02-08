@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SiloGuard Dashboard</title>
+    <style>
+        body { font-family: sans-serif; background: #222; color: white; text-align: center; }
+        .card { background: #333; padding: 20px; margin: 10px; border-radius: 10px; display: inline-block; width: 200px; }
+        .danger { color: #ff4444; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>SiloGuard Proactive Health Monitor</h1>
+    <div id="dashboard">
+        <div class="card"><h3>Depth</h3><p id="depth">0</p>mm</div>
+        <div class="card"><h3>Temperature</h3><p id="temp">0</p>°C</div>
+        <div class="card"><h3>Humidity</h3><p id="hum">0</p>%</div>
+        <div class="card"><h3>VOC Gas</h3><p id="voc">0</p></div>
+        <hr>
+        <div class="card" style="width: 400px;">
+            <h2>Combustion Risk: <span id="risk">0</span>%</h2>
+            <h2 class="danger">Time to Incident: <span id="tti">0</span> hrs</h2>
+        </div>
+    </div>
+
+    <script>
+        setInterval(() => {
+            fetch('/data').then(response => response.json()).then(data => {
+                document.getElementById('depth').innerText = data.depth;
+                document.getElementById('temp').innerText = data.temp;
+                document.getElementById('hum').innerText = data.hum;
+                document.getElementById('voc').innerText = data.voc;
+                document.getElementById('risk').innerText = data.risk;
+                document.getElementById('tti').innerText = data.tti;
+            });
+        }, 1000);
+    </script>
+</body>
+</html>
