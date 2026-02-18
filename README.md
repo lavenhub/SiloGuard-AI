@@ -2,7 +2,7 @@
 
 **SiloGuard AI Pro** is an advanced, end-to-end monitoring solution designed to provide a "digital twin" of silo health. By combining IoT sensor arrays with computer vision, it focuses on early combustion detection, worker safety, and biological purity.
 
-![Image Alt][(Screenshot 2026-01-20 160349.png)](Screenshot 2026-01-20 160349.png)
+![Alt Text](Screenshot 2026-01-20 160349.png)
 ---
 
 ## 🏗️ System Architecture
