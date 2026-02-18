@@ -1,61 +1,149 @@
-# 🛡️ SiloGuard AI Pro: Industrial Grain Monitoring & Safety Ecosystem
+# 🛡️ SiloGuard AI Pro  
+### Industrial Grain Monitoring & Safety Ecosystem
 
-**SiloGuard AI Pro** is an advanced, end-to-end monitoring solution designed to provide a "digital twin" of silo health. By combining IoT sensor arrays with computer vision, it focuses on early combustion detection, worker safety, and biological purity.
+**SiloGuard AI Pro** is an advanced, end-to-end monitoring solution designed to provide a **digital twin of silo health**.  
+By combining IoT sensor arrays with computer vision, it focuses on:
 
-![image alt]([webpage_image.png])
----
-
-## 🏗️ System Architecture
-
-The project is built on a four-pillar architecture that ensures data flows from the physical silo to a blockchain-secured dashboard.
-
-### 1. Hardware Integration Layer
-The system communicates with an Arduino/ESP32 sensor array via Serial communication (COM21).
-* **Depth Measurement:** Ultrasonic sensors track grain levels and remaining volume.
-* **Atmospheric Monitoring:** DHT22 and MQ-series sensors monitor heat, moisture, and VOCs (Volatile Organic Compounds).
-* **Vision Sensor:** A smartphone serves as the primary vision sensor, connected via **USB-C** and bridged through **Camo** to act as a high-fidelity webcam.
-
-### 2. Vision & Analysis Layer (CNN-Inspired)
-The core analysis has evolved from simple color-math to a pattern-recognition model that simulates the behavior of a Convolutional Neural Network (CNN).
-* **Gaussian Pre-processing:** Smoothes the image to eliminate the sharp "geometric noise" caused by natural shadows between healthy grain kernels.
-* **Laplacian Feature Extraction:** A high-pass filter that identifies "low-frequency blobs" and fuzzy textures characteristic of mold growth.
-* **HSV Gating:** Confirms the color of detected textures falls within the specific desaturated green/grey spectrum identified in infected grain samples.
-* **Biological Density Index (BDI):** A proprietary metric that calculates the percentage of the grain surface infected to determine the final Grade (A-F).
-
-### 3. Data Processing & Machine Learning
-* **Combustion Prediction:** A Scikit-learn model (`silo_model.pkl`) processes telemetry to predict spontaneous combustion risks.
-* **Risk Scoring:** Dynamic gauges visualize "Worker Health Risk" based on combined VOC and Temperature indices.
-
-### 4. Security & Compliance (Blockchain Ledger)
-* **Immutable Logs:** Every scan is logged into a structured dataframe.
-* **QR Generation:** A digital safety passport is generated for every session, allowing inspectors to verify silo history via an encrypted QR code.
+- 🔥 Early combustion detection  
+- 👷 Worker safety monitoring  
+- 🌾 Biological purity analysis  
 
 ---
 
-## 🚀 Dashboard Modules
+## 📸 System Preview
 
-### 📊 Command Center
-Displays real-time telemetry from the Arduino. It features a "Metric Card" UI with auto-updating gauges for combustion risk and gas levels.
-
-### 👷 Worker Safety Analysis
-A dedicated safety suite that analyzes environmental hazards. It provides actionable guidance (Safe, Warning, or Danger) based on real-time atmospheric data.
-
-### 👁️ AI Surface Vision (USB Camo Mode)
-The primary diagnostic interface featuring:
-* **Dual-View Display:** Shows the **Raw Captured Feed** (what the phone sees) side-by-side with the **AI Diagnostic Mapping**.
-* **Targeted Region Capture:** Uses a circular gate to focus analysis on the grain center, ignoring metallic silo walls.
-* **Reflection Logic:** Detects surface "matte" zones where biological growth has replaced the natural reflection of healthy grain.
-
-### 🏗️ 2D Vertical Diagram
-A stacked-bar visualization that represents the internal layers of the silo, color-coded by the combustion risk detected at various depths during the scan.
+![SiloGuard Dashboard](webpage_image.png)
 
 ---
 
-## 🛠️ Installation & Configuration
+# 🏗️ System Architecture
 
-### Prerequisites
-* **Python:** 3.9 or higher.
-* **Drivers:** Arduino USB drivers and Camo/DroidCam desktop client.
+SiloGuard AI Pro is built on a **four-pillar architecture** that ensures seamless data flow from the physical silo to a blockchain-secured dashboard.
+
+---
+
+## 1️⃣ Hardware Integration Layer
+
+The system communicates with an **Arduino / ESP32 sensor array** via Serial communication (COM21).
+
+### 🔎 Sensors Integrated:
+
+- **Ultrasonic Sensors** → Grain depth & volume tracking  
+- **DHT22** → Temperature & humidity monitoring  
+- **MQ-Series Gas Sensors** → VOC detection  
+- **Smartphone (USB-C via Camo/DroidCam)** → High-fidelity vision sensor  
+
+---
+
+## 2️⃣ Vision & Analysis Layer (CNN-Inspired)
+
+The vision system simulates CNN behavior through structured image-processing pipelines.
+
+### 🧠 Processing Steps:
+
+- **Gaussian Pre-processing**  
+  Eliminates geometric noise from natural kernel shadows  
+
+- **Laplacian Feature Extraction**  
+  Detects fuzzy, low-frequency mold textures  
+
+- **HSV Gating**  
+  Confirms infected grain color spectrum (desaturated green/grey)  
+
+- **Biological Density Index (BDI)**  
+  Proprietary metric calculating infected surface percentage  
+  → Final Grain Grade (A–F)
+
+---
+
+## 3️⃣ Data Processing & Machine Learning
+
+- 🔥 **Combustion Prediction Model**  
+  Scikit-learn model (`silo_model.pkl`) predicts spontaneous combustion risk  
+
+- 📊 **Dynamic Risk Scoring**  
+  Real-time gauges visualize:
+  - Worker Health Risk
+  - VOC Index
+  - Temperature Index
+
+---
+
+## 4️⃣ Security & Compliance (Blockchain Ledger)
+
+- 🔐 Immutable Scan Logs  
+- 📁 Structured DataFrame Storage  
+- 📲 QR Code Digital Safety Passport  
+  Inspectors can verify silo history through encrypted QR verification  
+
+---
+
+# 🚀 Dashboard Modules
+
+---
+
+## 📊 Command Center
+
+- Live Arduino telemetry  
+- Metric card UI  
+- Auto-updating risk gauges  
+- Real-time gas and combustion indicators  
+
+---
+
+## 👷 Worker Safety Analysis
+
+- Environmental hazard detection  
+- VOC + Temperature combined risk index  
+- Actionable Guidance:
+  - ✅ Safe  
+  - ⚠ Warning  
+  - 🚨 Danger  
+
+---
+
+## 👁️ AI Surface Vision (USB Camo Mode)
+
+Primary diagnostic interface.
+
+### Features:
+
+- 🖥 Dual View Display  
+  - Raw Camera Feed  
+  - AI Diagnostic Mapping  
+
+- 🎯 Circular Targeted Capture  
+  Focuses on grain center  
+  Ignores metallic silo walls  
+
+- 🌫 Reflection Logic  
+  Detects matte zones indicating biological growth  
+
+---
+
+## 🏗️ 2D Vertical Silo Diagram
+
+Stacked-bar visualization representing:
+
+- Internal silo layers  
+- Depth-based combustion risk  
+- Color-coded risk segmentation  
+
+---
+
+# 🛠 Installation & Configuration
+
+---
+
+## 📦 Prerequisites
+
+- Python 3.9+
+- Arduino USB Drivers
+- Camo Studio / DroidCam Desktop Client
+- Required Python Libraries:
+  ```bash
+  pip install numpy opencv-python pandas scikit-learn matplotlib qrcode streamlit
+
 
 ### Dependencies
 ```bash
